@@ -1,3 +1,13 @@
+> **Play it with Asciiverse.** With [av](https://asciiverse.sh), the Asciiverse
+> client:
+>
+> ```
+> av install sssnake
+> av play sssnake
+> ```
+>
+> The original README follows.
+
 # sssnake
 The classic snake game for the terminal that can play itself and be used like a screensaver.
 [![asciicast](https://asciinema.org/a/477685.svg)](https://asciinema.org/a/477685)
