@@ -1,0 +1,38 @@
+# System packages (.deb, .rpm, .apk, Arch) for sssnake, built by nfpm from
+# the same static binary as the av archive. The release workflow sets
+# VERSION (upstream's, with the upstream commit's date as semver metadata
+# when we build past a release, e.g. 0.4.0+20261025; nfpm writes that part
+# the way each format wants it), RELEASE (our packaging release) and ARCH
+# (amd64 or arm64), and puts the binary at stage/sssnake.
+#
+# No .desktop file on purpose: av is the one place titles are started from,
+# so Asciiverse packages never add menu entries (asciiverse/CLAUDE.md).
+name: sssnake
+arch: ${ARCH}
+platform: linux
+version: ${VERSION}
+release: ${RELEASE}
+section: games
+priority: optional
+maintainer: Asciiverse <packages@asciiverse.sh>
+vendor: Asciiverse
+homepage: https://github.com/theasciiverse/sssnake
+license: MIT
+description: |
+  Snake for the terminal that can play itself.
+  Steer it yourself, speed up in arcade mode, or let the autopilot chase
+  the food with A* or BFS, and run it as a screensaver. By AngelJumbo,
+  packaged by Asciiverse.
+contents:
+  - src: stage/sssnake
+    dst: /usr/bin/sssnake
+    file_info: { mode: 0755 }
+  - src: docs/sssnake.1
+    dst: /usr/share/man/man1/sssnake.1
+    file_info: { mode: 0644 }
+  - src: LICENSE
+    dst: /usr/share/doc/sssnake/copyright
+    file_info: { mode: 0644 }
+  - src: README.md
+    dst: /usr/share/doc/sssnake/README.md
+    file_info: { mode: 0644 }
