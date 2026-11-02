@@ -61,6 +61,17 @@ int init_scr(int selStyle, int *maxX, int *maxY, short arcadeMode,
     return 0;
   }
 
+  // A board sized from the terminal gets the same floor as -x and -y (5 by
+  // 5): smaller ones divide by zero placing food and junk, or never find a
+  // free cell for the food.
+  if (maxX_ < 5 || maxY_ < 5) {
+    tb_shutdown();
+    printf("The terminal is too small: sssnake needs at least 10 columns by "
+           "%d rows\n",
+           5 + drawScore * 2);
+    return 0;
+  }
+
   tb_hide_cursor();
 
   *maxX = maxX_;
